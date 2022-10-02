@@ -13,11 +13,12 @@ const Cart = ({history}) => {
     // console.log(cartItems)
 
     const increaseQuantity = (id,quantity,stock) => {
+        console.log("added")
         const newQty = quantity + 1;
+        console.log({id,quantity,stock})
         if(stock <= quantity){
             return;
         }
-
         dispatch(addItemsToCart(id,newQty))
     }
 
@@ -61,7 +62,7 @@ const Cart = ({history}) => {
                     <div className='cartInput'>
                         <button onClick={()=> decreaseQuantity(item.product,item.quantity)} >-</button>
                         <input type="number" value={item.quantity} readOnly/>
-                        <button onClick={()=> increaseQuantity(item.product, item.quantity,item.stock)}>+</button>
+                        <button onClick={()=> increaseQuantity(item.product, item.quantity,item.stock)}>Plus</button>
                     </div>
                     <p className='cartSubtotal'>{`₹${item.price * item.quantity}`}</p>
                 </div>

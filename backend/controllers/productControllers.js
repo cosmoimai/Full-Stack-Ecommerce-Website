@@ -7,7 +7,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors")
 const ApiFeatures = require("../utils/apifeatures")
 const cloudinary = require("cloudinary")
 
-console.log("here")
+// console.log("here")
 
 //Create Product --- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
@@ -52,10 +52,10 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 
 //Get All Products
 exports.getAllProducts = catchAsyncErrors(async (req, res) => {
-    console.log(" i am in getAllProducts function")
+    // console.log(" i am in getAllProducts function")
     const resultPerPage = 8;
     const productsCount = await Product.countDocuments()
-
+    // console.log(req.query);
     const apiFeature = new ApiFeatures(Product.find(), req.query).search().filter()
 
     let products = await apiFeature.query.clone();
@@ -88,7 +88,7 @@ exports.getAdminProducts = catchAsyncErrors(async (req, res) => {
 
 //Update Product -- Admin
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
     let product = Product.findById(req.params.id)
 
     if (!product) {

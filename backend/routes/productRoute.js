@@ -11,16 +11,16 @@ const {
     getAdminProducts,
 } = require("../controllers/productControllers");
 
-console.log("I am in productRoute.js")
+// console.log("I am in productRoute.js")
 
 const {
     isAuthenticatedUser,
     authorizeRoles
 } = require("../middleware/auth");
 
-const router = express.Router();
+const router = express.Router(); //Use the express.Router class to create modular, mountable route handlers. A Router instance is a complete middleware and routing system; for this reason, it is often referred to as a “mini-app”.
 
-router.route("/admin/products").get(isAuthenticatedUser,authorizeRoles("admin"),getAdminProducts)
+router.route("/admin/products").get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts)
 
 router.route("/products").get(getAllProducts)
 router.route("/admin/product/new").post(isAuthenticatedUser, authorizeRoles("admin"), createProduct)
